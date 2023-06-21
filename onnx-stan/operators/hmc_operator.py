@@ -5,6 +5,16 @@ from onnx.onnx_pb import FunctionProto
 # Define operator set
 operator_set = make_operatorsetid(domain='ai.onnx.extensions', version=1)
 
+# OpSchema().Name("CustomMCMCSampler")
+#     .Input(0, "distribution", "The distribution to sample from.", "T")
+#     .Input(1, "params", "The parameters of the distribution.", "T")
+#     .Output(0, "samples", "The generated samples.", "T")
+#     .Attr("num_samples", "The number of samples to draw.", AttributeProto.INT)
+#     .Attr("algorithm", "The MCMC algorithm to use.", AttributeProto.STRING)
+#     .TypeConstraint("T", ["tensor(float)", "tensor(double)"], "Allow float and double tensors")
+#
+
+
 # Define HMC operator
 hmc_operator = onnx.helper.make_operator_schema('HMC',
     domain='ai.onnx.extensions',
