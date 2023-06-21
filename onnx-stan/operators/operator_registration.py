@@ -2,6 +2,7 @@ from onnxruntime import onnx, helper, AttributeProto, TensorProto, GraphProto
 from onnx import defs, helper, checker
 from onnxruntime_extensions import get_library_path, PyOp
 
+
 from scipy.special import logsumexp
 
 import numpy as np
@@ -385,3 +386,46 @@ def register_normal_op():
     defs.add(schema)
 
 register_normal_op()
+
+
+def register_other_ops():
+    # Custom operator schemas
+    operator_schemas = [
+        helper.make_opsetid(domain='com.custom', version=1)
+    ]
+
+    # Gradient of target log probability
+    gradient_op_schema = onnx.OperatorSchema('GradientOfTargetLogProb')
+    gradient_op_schema.since_version = 1
+    gradient_op_schema.domain = 'com.custom'
+    operator_schemas.append(gradient_op_schema)
+
+    # Proposal generation
+    proposal_op_schema = onnx.OperatorSchema('ProposalGeneration')
+    proposal_op_schema.since_version = 1
+    proposal_op_schema.domain = 'com.custom'
+    operator_schemas.append(proposal_op_schema)
+
+    # Metropolis-Hastings acceptance
+    mh_op_schema = onnx.OperatorSchema('MetropolisHastingsAcceptance')
+    mh_op_schema.since_version = 1
+    mh_op_schema.domain = 'com.custom'
+    operator_schemas.append(mh_op_schema)
+
+    # Leapfrog integration
+    leapfrog_op_schema = onnx.OperatorSchema('LeapfrogIntegration')
+    leapfrog_op_schema.since_version = 1
+    leapfrog_op_schema.domain = 'com.custom'
+    operator_schemas.append(leapfrog_op_schema)
+
+    # Pathfinder algorithm
+    pathfinder_op_schema = onnx.OperatorSchema('PathFinder')
+    pathfinder_op_schema.since_version = 1
+    pathfinder_op_schema.domain = 'com.custom'
+    operator_schemas.append(pathfinder_op_schema)
+
+    # Register the custom operator schemas
+    onnx.register_op_schema(operator_schemas)
+
+register_other_ops()
+
