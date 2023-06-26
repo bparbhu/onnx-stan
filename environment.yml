@@ -4,7 +4,7 @@ channels:
   - anaconda
   - conda-forge
 dependencies:
-  - python=3.8
+  - python=3.10
   - pip
   - onnx
   - numpy
@@ -15,8 +15,3 @@ dependencies:
   - protobuf
   - pip:
     - onnxruntime
-  - gxx_linux-64 # Linux
-  - gcc_linux-64 # Linux
-  - clang_osx-64 # MacOS
-  - clangxx_osx-64 # MacOS
-  - m2w64-toolchain  # Windows
