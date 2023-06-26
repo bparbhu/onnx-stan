@@ -1,0 +1,20 @@
+name: onnx-stan
+channels:
+  - defaults
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - onnx
+  - numpy
+  - pybind11
+  - cmake
+  - pystan
+  - gcc_linux-64 # or appropriate C++ compiler for your platform
+  - gxx_linux-64 # or appropriate C++ compiler for your platform
+  - make
+  - setuptools
+  - protobuf
+  - pip:
+    - onnxruntime
