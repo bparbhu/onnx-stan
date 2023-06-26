@@ -11,8 +11,12 @@ dependencies:
   - pybind11
   - cmake
   - pystan
-  - m2w64-toolchain  # This provides the GCC toolchain on Windows
   - setuptools
   - protobuf
   - pip:
     - onnxruntime
+  - gxx_linux-64 # Linux
+  - gcc_linux-64 # Linux
+  - clang_osx-64 # MacOS
+  - clangxx_osx-64 # MacOS
+  - m2w64-toolchain  # Windows
