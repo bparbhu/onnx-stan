@@ -4,16 +4,14 @@ channels:
   - anaconda
   - conda-forge
 dependencies:
-  - python=3.10
+  - python=3.8
   - pip
   - onnx
   - numpy
   - pybind11
   - cmake
   - pystan
-  - gcc_linux-64 # or appropriate C++ compiler for your platform
-  - gxx_linux-64 # or appropriate C++ compiler for your platform
-  - make
+  - m2w64-toolchain  # This provides the GCC toolchain on Windows
   - setuptools
   - protobuf
   - pip:
