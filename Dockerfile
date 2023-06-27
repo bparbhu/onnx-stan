@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11-slim-buster
+FROM continuumio/miniconda3:4.10.3
 
 # Set the working directory in the container to /onnx-stan
 WORKDIR /onnx-stan
@@ -17,6 +17,11 @@ RUN apt-get update && apt-get install -y \
     protobuf-compiler \
     libprotobuf-dev \
     libboost-all-dev
+
+# Create the Conda environment and install cmdstan
+RUN conda create -n stan -c conda-forge cmdstan
+RUN echo "source activate stan" > ~/.bashrc
+ENV PATH /opt/conda/envs/stan/bin:$PATH
 
 # Run setup.py
 RUN python setup.py install
